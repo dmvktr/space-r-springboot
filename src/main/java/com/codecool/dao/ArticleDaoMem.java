@@ -1,15 +1,14 @@
 package com.codecool.dao;
 
 import com.codecool.model.Article;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ArticleDaoMem implements ArticleDao{
     private List<Article> news;
 
-    public ArticleDaoMem(List<Article> news) {
-        this.news = news;
-    }
 
     @Override
     public Article getBy(int id) {
@@ -17,11 +16,12 @@ public class ArticleDaoMem implements ArticleDao{
     }
 
     @Override
-    public List<Article> getAll() {
-        return null;
+    public List<Article> getAllArticles() {
+        return this.news;
     }
 
-    public List<Article> getNews() {
-        return news;
+    @Override
+    public void updateNews(List<Article> articles) {
+        this.news = articles;
     }
 }
