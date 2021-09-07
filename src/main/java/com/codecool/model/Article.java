@@ -1,12 +1,16 @@
 package com.codecool.model;
 
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Article {
     private String title;
     private String imageUrl;
     private String newsSite;
     private String articleUrl;
     private String url;
-    private String articleSummary;
+    private String summary;
     private String publishedAt;
 
     public String getUrl() {
@@ -49,12 +53,12 @@ public class Article {
         this.articleUrl = articleUrl;
     }
 
-    public String getArticleSummary() {
-        return articleSummary;
+    public String getSummary() {
+        return summary;
     }
 
-    public void setArticleSummary(String articleSummary) {
-        this.articleSummary = articleSummary;
+    public void setArticleSummary(String summary) {
+        this.summary = summary;
     }
 
     public String getPublishedAt() {
