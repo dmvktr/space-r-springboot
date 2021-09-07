@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface ArticleDao {
     Article getBy(int id);
-    List<Article> getAll();
+    List<Article> getAllArticles();
+    void updateNews(List<Article> articles);
 }
