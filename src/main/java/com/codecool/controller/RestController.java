@@ -2,7 +2,9 @@ package com.codecool.controller;
 
 
 import com.codecool.dao.ArticleDao;
+import com.codecool.dao.AstronautDao;
 import com.codecool.model.Article;
+import com.codecool.model.Astronauts;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.DataHandlerService;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
@@ -31,6 +33,16 @@ public class RestController {
         List<Article> articles = apiDataHandler.fetchData(APIAccessRoutes.NEWS);
         articleDao.updateNews(articles);
         return articleDao.getAllArticles();
+    }
+
+    @ResponseBody
+    @GetMapping("/astronauts")
+    public Astronauts astronaut(HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", CORS_POLICY);
+        AstronautDao astronautDao = dataService.getAstronautDao();
+        Astronauts astronauts = apiDataHandler.fetchAstronautsData(APIAccessRoutes.ASTRONAUTS);
+        astronautDao.updateAstronauts(astronauts);
+        return astronautDao.getAllAstronauts();
     }
 
 }
