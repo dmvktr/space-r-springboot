@@ -1,4 +1,4 @@
-package com.codecool.model;
+package com.codecool.model.astronauts;
 
 public class Astronaut {
     private String id;
@@ -7,8 +7,15 @@ public class Astronaut {
     private String date_of_birth;
     private String nationality;
     private String bio;
-//    private String status;
+    private AstronautStatus status;
 
+    public AstronautStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AstronautStatus status) {
+        this.status = status;
+    }
 
     public String getId() {
         return id;

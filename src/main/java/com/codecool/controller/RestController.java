@@ -4,7 +4,7 @@ package com.codecool.controller;
 import com.codecool.dao.ArticleDao;
 import com.codecool.dao.AstronautDao;
 import com.codecool.model.Article;
-import com.codecool.model.Astronauts;
+import com.codecool.model.astronauts.Astronauts;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.DataHandlerService;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;

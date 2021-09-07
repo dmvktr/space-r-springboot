@@ -1,11 +1,14 @@
-package com.codecool.model;
+package com.codecool.model.astronauts;
 
 import java.util.List;
+
 
 public class Astronauts {
     private String next;
     private String previous;
     private List<Astronaut> results;
+
+
 
     public List<Astronaut> getResults() {
         return results;
@@ -30,4 +33,5 @@ public class Astronauts {
     public void setPrevious(String previous) {
         this.previous = previous;
     }
+
 }

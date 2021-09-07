@@ -1,7 +1,7 @@
 package com.codecool.service;
 
 import com.codecool.model.Article;
-import com.codecool.model.Astronauts;
+import com.codecool.model.astronauts.Astronauts;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

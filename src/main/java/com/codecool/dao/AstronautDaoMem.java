@@ -1,5 +1,5 @@
 package com.codecool.dao;
-import com.codecool.model.Astronauts;
+import com.codecool.model.astronauts.Astronauts;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

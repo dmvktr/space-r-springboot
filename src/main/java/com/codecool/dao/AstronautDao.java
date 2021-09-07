@@ -1,6 +1,6 @@
 package com.codecool.dao;
 
-import com.codecool.model.Astronauts;
+import com.codecool.model.astronauts.Astronauts;
 
 public interface AstronautDao {
     Astronauts getBy(int id);
