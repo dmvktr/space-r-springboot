@@ -2,13 +2,14 @@ package com.codecool.service;
 
 import com.codecool.dao.ArticleDao;
 import com.codecool.dao.AstronautDao;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataHandlerService {
     private ArticleDao articleDao;
-    private AstronautDao astronautDao;
 
+    private AstronautDao astronautDao;
     public DataHandlerService(ArticleDao articleDao, AstronautDao astronautDao) {
         this.articleDao = articleDao;
         this.astronautDao = astronautDao;
@@ -29,4 +30,5 @@ public class DataHandlerService {
     public void setAstronautDao(AstronautDao astronautDao) {
         this.astronautDao = astronautDao;
     }
+
 }
