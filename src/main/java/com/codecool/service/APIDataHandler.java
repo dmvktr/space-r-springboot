@@ -1,6 +1,8 @@
 package com.codecool.service;
 
 import com.codecool.model.Article;
+import com.codecool.model.astronauts.Astronauts;
+
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +18,12 @@ public class APIDataHandler {
         RestTemplate restTemplate = new RestTemplate();
         return Arrays.asList(Objects.requireNonNull(restTemplate
             .getForObject(api.getApiPath(), Article[].class)));
+    }
+
+    public Astronauts fetchAstronautsData(APIAccessRoutes api) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate
+            .getForObject(api.getApiPath(), Astronauts.class);
     }
 
 }
