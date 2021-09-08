@@ -30,7 +30,7 @@ class RestControllerIntegrationTests {
     DataHandlerService dataHandlerService;
 
     @Test
-    void newsRoute_shouldReturnNewsObjectArray_whenUserVisitsRoute() throws Exception {
+    void newsRoute_shouldReturnWithStatusOkAndCorrectResponse_whenUserVisitsRoute() throws Exception {
         News firstNewsArticle = new News("articleTitle", "dummyUrl", "newsSite", "articleUrl", "url", "summaryOfArticle", "publishedAt");
         News secondNewsArticle = new News("articleTitle2", "dummyUrl2", "newsSite2", "articleUrl", "url", "summaryOfArticle", "publishedAt");
         News[] expectedNews = {firstNewsArticle, secondNewsArticle};
@@ -46,7 +46,7 @@ class RestControllerIntegrationTests {
     }
 
     @Test
-    void astronautsRoute_shouldReturnAstronautsObject_whenUserVisitsRoute() throws Exception {
+    void astronautsRoute_shouldReturnWithStatusOkAndCorrectResponse_whenUserVisitsRoute() throws Exception {
         List<Astronaut> listOfAstronauts = new ArrayList<>(Arrays.asList(new Astronaut(), new Astronaut()));
         Astronauts astronauts = new Astronauts("urlToNextPage", "urlToPreviousPage", listOfAstronauts);
 
