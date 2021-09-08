@@ -25,6 +25,6 @@ public class APIDataHandler {
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
             .bodyToMono(targetType);
-        return targetType.cast(response.block());
+        return response.block();
     }
 }

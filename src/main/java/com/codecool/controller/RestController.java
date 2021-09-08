@@ -4,6 +4,7 @@ import com.codecool.model.Article;
 import com.codecool.model.GalleryPicture;
 import com.codecool.model.astronauts.Astronauts;
 
+import com.codecool.model.events.Events;
 import com.codecool.model.locations.Locations;
 import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.service.DataHandlerService;
@@ -44,6 +45,11 @@ public class RestController {
     @GetMapping("/locations")
     public Locations locations() {
         return dataService.getAllLocations();
+    }
+
+    @GetMapping("/events")
+    public Events events() {
+       return dataService.getAllEvents();
     }
 
 }
