@@ -12,21 +12,21 @@ import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.List;
 
+@CrossOrigin("http://localhost:3000")
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
     private APIDataHandler apiDataHandler;
     private DataHandlerService dataService;
-    private final String REQUEST_DOMAIN = "http://localhost:3000";
+
 
     public RestController(APIDataHandler apiDataHandler, DataHandlerService dataService) {
         this.apiDataHandler = apiDataHandler;
         this.dataService = dataService;
     }
 
-    @CrossOrigin(REQUEST_DOMAIN)
+
     @ResponseBody
     @GetMapping("/news")
     public List<Article> news() {
@@ -36,7 +36,7 @@ public class RestController {
         return articleDao.getAllArticles();
     }
 
-    @CrossOrigin(REQUEST_DOMAIN)
+
     @ResponseBody
     @GetMapping("/astronauts")
     public Astronauts astronaut() {
