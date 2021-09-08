@@ -1,8 +1,9 @@
 package com.codecool.dao;
 import com.codecool.model.spacecrafts.Spacecrafts;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Repository("spacecraftDao")
 public class SpacecraftDaoMem implements SpacecraftDao {
     private Spacecrafts spacecrafts;
 

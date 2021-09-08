@@ -1,17 +1,10 @@
 package com.codecool.model;
 
-import java.io.Serializable;
 
-public class GalleryPicture implements Serializable {
+public class GalleryPicture {
     private String hdUrl;
     private String url;
     private String title;
-
-    public GalleryPicture(String hdUrl, String url, String title) {
-        this.hdUrl = hdUrl;
-        this.url = url;
-        this.title = title;
-    }
 
     public String getHdUrl() {
         return hdUrl;
@@ -35,5 +28,14 @@ public class GalleryPicture implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "GalleryPicture{" +
+            "hdUrl='" + hdUrl + '\'' +
+            ", url='" + url + '\'' +
+            ", title='" + title + '\'' +
+            '}';
     }
 }
