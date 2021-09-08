@@ -1,11 +1,11 @@
 package com.codecool.dao;
 
-import com.codecool.model.Article;
+import com.codecool.model.news.News;
 
 import java.util.List;
 
 public interface ArticleDao {
-    Article getBy(int id);
-    Article[] getAllArticles();
-    void updateNews(List<Article> articles);
+    News getBy(int id);
+    News[] getAllArticles();
+    void updateNews(List<News> news);
 }
