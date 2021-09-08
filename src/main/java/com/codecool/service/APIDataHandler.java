@@ -1,34 +1,30 @@
 package com.codecool.service;
 
-import com.codecool.model.Article;
-import com.codecool.model.astronauts.Astronauts;
-import com.codecool.model.events.Events;
-
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @Component
 public class APIDataHandler {
 
-    public List<Article> fetchData(APIAccessRoutes api) {
-        RestTemplate restTemplate = new RestTemplate();
-        return Arrays.asList(Objects.requireNonNull(restTemplate
-            .getForObject(api.getApiPath(), Article[].class)));
+    private final WebClient webClient;
+
+    public APIDataHandler() {
+        this.webClient = WebClient.create();
     }
 
-    public Astronauts fetchAstronautsData(APIAccessRoutes api) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate
-            .getForObject(api.getApiPath(), Astronauts.class);
+    public String fetchAPIRoute(APIAccessRoutes api){
+        return api.getApiPath();
     }
 
-    public Events fetchEventsData(APIAccessRoutes api) {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(api.getApiPath(), Events.class);
+    public <T> T fetchData(APIAccessRoutes targetApi, Class<T> targetType){
+        Mono<T> response = webClient.get()
+            .uri(fetchAPIRoute(targetApi))
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(targetType);
+        return response.block();
     }
 }

@@ -1,33 +1,29 @@
 package com.codecool.dao;
-
-import com.codecool.model.events.Events;
+import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
-
-@Repository("eventDao")
-public class EventDaoMem implements EventDao {
+@Repository("spacecraftDao")
+public class SpacecraftDaoMem implements SpacecraftDao {
     private final APIDataHandler apiDataHandler;
 
     @Autowired
-    public EventDaoMem(APIDataHandler apiDataHandler) {
+    public SpacecraftDaoMem(APIDataHandler apiDataHandler) {
         this.apiDataHandler = apiDataHandler;
     }
 
     @Override
-    public Events getById() {
+    public Spacecrafts getBy(int id) {
         return null;
     }
 
     @Override
-    public Events getAllEvents() {
-        return apiDataHandler.fetchData(APIAccessRoutes.EVENTS, Events.class);
+    public Spacecrafts getAllSpacecrafts() {
+        return apiDataHandler.fetchData(APIAccessRoutes.SPACECRAFTS, Spacecrafts.class);
     }
 
     @Override
-    public void updateEvents(Events events) { }
-
+    public void updateSpacecrafts(Spacecrafts spacecrafts) { }
 }

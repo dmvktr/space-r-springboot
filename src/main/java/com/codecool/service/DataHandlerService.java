@@ -1,44 +1,59 @@
 package com.codecool.service;
 
-import com.codecool.dao.ArticleDao;
-import com.codecool.dao.AstronautDao;
-import com.codecool.dao.EventDao;
+import com.codecool.dao.*;
 
+import com.codecool.model.Article;
+import com.codecool.model.GalleryPicture;
+import com.codecool.model.astronauts.Astronauts;
+import com.codecool.model.events.Events;
+import com.codecool.model.locations.Locations;
+import com.codecool.model.spacecrafts.Spacecrafts;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataHandlerService {
-    private ArticleDao articleDao;
-    private AstronautDao astronautDao;
-    private EventDao eventDao;
+    private final ArticleDao articleDao;
+    private final AstronautDao astronautDao;
+    private final GalleryDao galleryDao;
+    private final SpacecraftDao spacecraftDao;
+    private final LocationsDao locationsDao;
+    private final EventDao eventDao;
 
-    public DataHandlerService(ArticleDao articleDao, AstronautDao astronautDao, EventDao eventDao) {
+    @Autowired
+    public DataHandlerService(@Qualifier("articleDao") ArticleDao articleDao, @Qualifier("astronautDao") AstronautDao astronautDao,
+                              @Qualifier("galleryDao") GalleryDao galleryDao, @Qualifier("spacecraftDao") SpacecraftDao spacecraftDao,
+                              @Qualifier("locationsDao") LocationsDao locationsDao, @Qualifier("eventDao") EventDao eventDao) {
         this.articleDao = articleDao;
         this.astronautDao = astronautDao;
+        this.galleryDao = galleryDao;
+        this.spacecraftDao = spacecraftDao;
+        this.locationsDao = locationsDao;
         this.eventDao = eventDao;
     }
 
-    public ArticleDao getArticleDao() {
-        return articleDao;
+    public Astronauts getAllAstronauts(){
+        return astronautDao.getAllAstronauts();
     }
 
-    public void setArticleDao(ArticleDao articleDao) {
-        this.articleDao = articleDao;
+    public Article[] getAllArticles(){
+        return articleDao.getAllArticles();
     }
 
-    public AstronautDao getAstronautDao() {
-        return astronautDao;
+    public GalleryPicture[] getAllPictures(){
+        return galleryDao.getAllPictures();
     }
 
-    public void setAstronautDao(AstronautDao astronautDao) {
-        this.astronautDao = astronautDao;
+    public Spacecrafts getAllSpacecrafts(){
+        return spacecraftDao.getAllSpacecrafts();
     }
 
-    public EventDao getEventDao() {
-        return eventDao;
+    public Locations getAllLocations(){
+        return locationsDao.getAllLocations();
     }
 
-    public void setEventDao(EventDao eventDao) {
-        this.eventDao = eventDao;
+    public Events getAllEvents() {
+        return eventDao.getAllEvents();
     }
 }

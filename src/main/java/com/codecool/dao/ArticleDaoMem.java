@@ -1,14 +1,21 @@
 package com.codecool.dao;
 
 import com.codecool.model.Article;
-import org.springframework.stereotype.Component;
+import com.codecool.service.APIDataHandler;
+import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository("articleDao")
 public class ArticleDaoMem implements ArticleDao{
-    private List<Article> news;
+    private final APIDataHandler apiDataHandler;
 
+    @Autowired
+    public ArticleDaoMem(APIDataHandler apiDataHandler) {
+        this.apiDataHandler = apiDataHandler;
+    }
 
     @Override
     public Article getBy(int id) {
@@ -16,12 +23,10 @@ public class ArticleDaoMem implements ArticleDao{
     }
 
     @Override
-    public List<Article> getAllArticles() {
-        return this.news;
+    public Article[] getAllArticles() {
+        return apiDataHandler.fetchData(APIAccessRoutes.NEWS, Article[].class);
     }
 
     @Override
-    public void updateNews(List<Article> articles) {
-        this.news = articles;
-    }
+    public void updateNews(List<Article> articles) { }
 }
