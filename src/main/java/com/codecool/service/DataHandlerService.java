@@ -2,8 +2,8 @@ package com.codecool.service;
 
 import com.codecool.dao.*;
 
-import com.codecool.model.Article;
-import com.codecool.model.GalleryPicture;
+import com.codecool.model.news.News;
+import com.codecool.model.gallery.GalleryPicture;
 import com.codecool.model.astronauts.Astronauts;
 import com.codecool.model.events.Events;
 import com.codecool.model.locations.Locations;
@@ -37,7 +37,7 @@ public class DataHandlerService {
         return astronautDao.getAllAstronauts();
     }
 
-    public Article[] getAllArticles(){
+    public News[] getAllArticles(){
         return articleDao.getAllArticles();
     }
 
