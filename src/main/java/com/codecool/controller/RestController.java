@@ -3,8 +3,10 @@ package com.codecool.controller;
 
 import com.codecool.dao.ArticleDao;
 import com.codecool.dao.AstronautDao;
+import com.codecool.dao.EventDao;
 import com.codecool.model.Article;
 import com.codecool.model.astronauts.Astronauts;
+import com.codecool.model.events.Events;
 
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.DataHandlerService;
@@ -44,6 +46,16 @@ public class RestController {
         Astronauts astronauts = apiDataHandler.fetchAstronautsData(APIAccessRoutes.ASTRONAUTS);
         astronautDao.updateAstronauts(astronauts);
         return astronautDao.getAllAstronauts();
+    }
+
+    @CrossOrigin(REQUEST_DOMAIN)
+    @ResponseBody
+    @GetMapping("/events")
+    public Events events() {
+        EventDao eventDao = dataService.getEventDao();
+        Events events = apiDataHandler.fetchEventsData(APIAccessRoutes.EVENTS);
+        eventDao.updateEvents(events);
+        return eventDao.getAllEvents();
     }
 
 }
