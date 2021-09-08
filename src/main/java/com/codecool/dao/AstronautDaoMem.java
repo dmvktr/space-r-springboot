@@ -1,9 +1,10 @@
 package com.codecool.dao;
 import com.codecool.model.astronauts.Astronauts;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Repository;
 
-@RestController
+@Repository("astronautDao")
 public class AstronautDaoMem implements AstronautDao {
+
     private Astronauts astronauts;
     @Override
     public Astronauts getBy(int id) {
