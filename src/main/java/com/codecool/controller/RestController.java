@@ -1,7 +1,7 @@
 package com.codecool.controller;
 
-import com.codecool.model.Article;
-import com.codecool.model.GalleryPicture;
+import com.codecool.model.news.News;
+import com.codecool.model.gallery.GalleryPicture;
 import com.codecool.model.astronauts.Astronauts;
 
 import com.codecool.model.events.Events;
@@ -23,7 +23,7 @@ public class RestController {
     }
 
     @GetMapping("/news")
-    public Article[] news() {
+    public News[] news() {
         return dataService.getAllArticles();
     }
 
