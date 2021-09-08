@@ -1,6 +1,7 @@
 package com.codecool.service;
 
 import com.codecool.model.Article;
+import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.model.astronauts.Astronauts;
 
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
@@ -26,4 +27,9 @@ public class APIDataHandler {
             .getForObject(api.getApiPath(), Astronauts.class);
     }
 
+    public Spacecrafts fetchSpacecrafts(APIAccessRoutes api) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate
+                .getForObject(api.getApiPath(), Spacecrafts.class);
+    }
 }
