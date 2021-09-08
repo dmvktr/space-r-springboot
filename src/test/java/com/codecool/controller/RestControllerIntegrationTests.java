@@ -46,8 +46,18 @@ class RestControllerIntegrationTests {
     }
 
     @Test
-    void astronautsRoute_shouldReturnAstronautsObject_whenUserVisitsRoute() {
+    void astronautsRoute_shouldReturnAstronautsObject_whenUserVisitsRoute() throws Exception {
+        List<Astronaut> listOfAstronauts = new ArrayList<>(Arrays.asList(new Astronaut(), new Astronaut()));
+        Astronauts astronauts = new Astronauts("urlToNextPage", "urlToPreviousPage", listOfAstronauts);
 
+        Mockito.when(dataHandlerService.getAllAstronauts()).thenReturn(astronauts);
+        mockMvc.perform(MockMvcRequestBuilders
+            .get("/astronauts"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.next").value(
+                "urlToNextPage"))
+            .andExpect(jsonPath("$.previous").value("urlToPreviousPage"));
     }
 
     @Test
