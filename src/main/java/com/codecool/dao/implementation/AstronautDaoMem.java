@@ -1,4 +1,5 @@
-package com.codecool.dao;
+package com.codecool.dao.implementation;
+import com.codecool.dao.AstronautDao;
 import com.codecool.model.astronauts.Astronauts;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
