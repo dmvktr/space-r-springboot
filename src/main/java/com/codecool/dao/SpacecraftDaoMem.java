@@ -1,11 +1,18 @@
 package com.codecool.dao;
 import com.codecool.model.spacecrafts.Spacecrafts;
+import com.codecool.service.APIDataHandler;
+import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
 @Repository("spacecraftDao")
 public class SpacecraftDaoMem implements SpacecraftDao {
-    private Spacecrafts spacecrafts;
+    private final APIDataHandler apiDataHandler;
+
+    @Autowired
+    public SpacecraftDaoMem(APIDataHandler apiDataHandler) {
+        this.apiDataHandler = apiDataHandler;
+    }
 
     @Override
     public Spacecrafts getBy(int id) {
@@ -14,11 +21,9 @@ public class SpacecraftDaoMem implements SpacecraftDao {
 
     @Override
     public Spacecrafts getAllSpacecrafts() {
-        return spacecrafts;
+        return apiDataHandler.fetchData(APIAccessRoutes.SPACECRAFTS, Spacecrafts.class);
     }
 
     @Override
-    public void updateSpacecrafts(Spacecrafts spacecrafts) {
-        this.spacecrafts = spacecrafts;
-    }
+    public void updateSpacecrafts(Spacecrafts spacecrafts) { }
 }
