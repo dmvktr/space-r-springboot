@@ -1,6 +1,7 @@
 package com.codecool.service;
 
 import com.codecool.model.Article;
+import com.codecool.model.locations.Locations;
 import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.model.astronauts.Astronauts;
 
@@ -31,5 +32,11 @@ public class APIDataHandler {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate
                 .getForObject(api.getApiPath(), Spacecrafts.class);
+    }
+
+    public Locations fetchLocations(APIAccessRoutes api) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate
+                .getForObject(api.getApiPath(), Locations.class);
     }
 }
