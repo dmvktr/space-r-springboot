@@ -1,6 +1,6 @@
 package com.codecool.model.locations;
 
-import java.util.List;
+import org.springframework.web.client.RestTemplate;
 
 public class Location {
     private String id;
@@ -10,6 +10,17 @@ public class Location {
     private String total_launch_count;
     private String total_landing_count;
     private String url;
+    private Pads landingPads;
+
+    public Pads getLandingPads() {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate
+                .getForObject(url, Pads.class);
+    }
+
+    public void setLandingPads(Pads pads) {
+        this.landingPads = pads;
+    }
 
     public String getName() {
         return name;
