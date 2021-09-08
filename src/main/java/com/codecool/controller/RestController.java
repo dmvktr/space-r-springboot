@@ -4,6 +4,8 @@ import com.codecool.model.Article;
 import com.codecool.model.GalleryPicture;
 import com.codecool.model.astronauts.Astronauts;
 
+import com.codecool.model.locations.Locations;
+import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.DataHandlerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,16 @@ public class RestController {
     @GetMapping("/gallery")
     public GalleryPicture[] gallery(){
         return dataService.getAllPictures();
+    }
+
+    @GetMapping("/spacecrafts")
+    public Spacecrafts spacecrafts() {
+        return dataService.getAllSpacecrafts();
+    }
+
+    @GetMapping("/locations")
+    public Locations locations() {
+        return dataService.getAllLocations();
     }
 
 }

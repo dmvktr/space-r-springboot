@@ -1,13 +1,13 @@
 package com.codecool.service;
 
-import com.codecool.dao.ArticleDao;
-import com.codecool.dao.AstronautDao;
+import com.codecool.dao.*;
 
-import com.codecool.dao.GalleryDao;
 import com.codecool.model.Article;
 import com.codecool.model.GalleryPicture;
 import com.codecool.model.astronauts.Astronaut;
 import com.codecool.model.astronauts.Astronauts;
+import com.codecool.model.locations.Locations;
+import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,15 +24,20 @@ public class DataHandlerService {
     private GalleryDao galleryDao;
     private WebClient webClient;
     private APIDataHandler apiDataHandler;
+    private SpacecraftDao spacecraftDao;
+    private LocationsDao locationsDao;
 
     @Autowired
     public DataHandlerService(@Qualifier("articleDao") ArticleDao articleDao, @Qualifier("astronautDao") AstronautDao astronautDao,
-                              @Qualifier("galleryDao") GalleryDao galleryDao, APIDataHandler apiDataHandler) {
+                              @Qualifier("galleryDao") GalleryDao galleryDao, @Qualifier("spacecraftDao") SpacecraftDao spacecraftDao,
+                              @Qualifier("locationsDao") LocationsDao locationsDao, APIDataHandler apiDataHandler) {
         this.articleDao = articleDao;
         this.astronautDao = astronautDao;
         this.galleryDao = galleryDao;
         this.webClient = WebClient.create();
         this.apiDataHandler = apiDataHandler;
+        this.spacecraftDao = spacecraftDao;
+        this.locationsDao = locationsDao;
     }
 
     public Astronauts getAllAstronauts(){
@@ -59,6 +64,24 @@ public class DataHandlerService {
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
             .bodyToMono(GalleryPicture[].class);
+        return response.block();
+    }
+
+    public Spacecrafts getAllSpacecrafts(){
+        Mono<Spacecrafts> response = webClient.get()
+            .uri(apiDataHandler.fetchAPIRoute(APIAccessRoutes.SPACECRAFTS))
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(Spacecrafts.class);
+        return response.block();
+    }
+
+    public Locations getAllLocations(){
+        Mono<Locations> response = webClient.get()
+            .uri(apiDataHandler.fetchAPIRoute(APIAccessRoutes.LOCATIONS))
+            .accept(MediaType.APPLICATION_JSON)
+            .retrieve()
+            .bodyToMono(Locations.class);
         return response.block();
     }
 
