@@ -1,11 +1,18 @@
 package com.codecool.dao;
 import com.codecool.model.locations.Locations;
+import com.codecool.service.APIDataHandler;
+import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
 @Repository("locationsDao")
 public class LocationsDaoMem implements LocationsDao{
-    private Locations locations;
+    private final APIDataHandler apiDataHandler;
+
+    @Autowired
+    public LocationsDaoMem(APIDataHandler apiDataHandler) {
+        this.apiDataHandler = apiDataHandler;
+    }
 
     @Override
     public Locations getBy(int id) {
@@ -14,12 +21,9 @@ public class LocationsDaoMem implements LocationsDao{
 
     @Override
     public Locations getAllLocations() {
-        return locations;
+        return apiDataHandler.fetchData(APIAccessRoutes.LOCATIONS, Locations.class);
     }
 
     @Override
-    public void updateLocations(Locations locations) {
-        this.locations = locations;
-
-    }
+    public void updateLocations(Locations locations) { }
 }
