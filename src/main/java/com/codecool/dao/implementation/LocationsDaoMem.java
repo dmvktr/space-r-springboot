@@ -1,5 +1,6 @@
 package com.codecool.dao.implementation;
 import com.codecool.dao.LocationsDao;
+import com.codecool.model.locations.Location;
 import com.codecool.model.locations.Locations;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
@@ -16,7 +17,7 @@ public class LocationsDaoMem implements LocationsDao {
     }
 
     @Override
-    public Locations getBy(int id) {
+    public Location getBy(int id) {
         return null;
     }
 
