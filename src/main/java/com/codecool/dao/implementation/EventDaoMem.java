@@ -1,5 +1,6 @@
-package com.codecool.dao;
+package com.codecool.dao.implementation;
 
+import com.codecool.dao.EventDao;
 import com.codecool.model.events.Events;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;

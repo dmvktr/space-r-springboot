@@ -1,4 +1,5 @@
-package com.codecool.dao;
+package com.codecool.dao.implementation;
+import com.codecool.dao.LocationsDao;
 import com.codecool.model.locations.Locations;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
@@ -6,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository("locationsDao")
-public class LocationsDaoMem implements LocationsDao{
+public class LocationsDaoMem implements LocationsDao {
     private final APIDataHandler apiDataHandler;
 
     @Autowired

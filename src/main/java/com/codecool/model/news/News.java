@@ -1,10 +1,12 @@
-package com.codecool.model;
+package com.codecool.model.news;
 
 
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
-public class Article {
+public class News {
     private String title;
     private String imageUrl;
     private String newsSite;
@@ -12,6 +14,32 @@ public class Article {
     private String url;
     private String summary;
     private String publishedAt;
+
+    public News() {
+    }
+
+    public News(String title, String imageUrl, String newsSite, String articleUrl, String url, String summary, String publishedAt) {
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.newsSite = newsSite;
+        this.articleUrl = articleUrl;
+        this.url = url;
+        this.summary = summary;
+        this.publishedAt = publishedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        News news = (News) o;
+        return Objects.equals(getTitle(), news.getTitle()) && Objects.equals(getImageUrl(), news.getImageUrl()) && Objects.equals(getNewsSite(), news.getNewsSite()) && Objects.equals(getArticleUrl(), news.getArticleUrl()) && Objects.equals(getUrl(), news.getUrl()) && Objects.equals(getSummary(), news.getSummary()) && Objects.equals(getPublishedAt(), news.getPublishedAt());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTitle(), getImageUrl(), getNewsSite(), getArticleUrl(), getUrl(), getSummary(), getPublishedAt());
+    }
 
     public String getUrl() {
         return url;

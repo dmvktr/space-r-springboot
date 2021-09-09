@@ -8,7 +8,14 @@ public class Astronauts {
     private String previous;
     private List<Astronaut> results;
 
+    public Astronauts() {
+    }
 
+    public Astronauts(String next, String previous, List<Astronaut> results) {
+        this.next = next;
+        this.previous = previous;
+        this.results = results;
+    }
 
     public List<Astronaut> getResults() {
         return results;

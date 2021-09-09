@@ -4,8 +4,8 @@ import com.codecool.model.news.News;
 
 import java.util.List;
 
-public interface ArticleDao {
+public interface NewsDao {
     News getBy(int id);
-    News[] getAllArticles();
+    News[] getAllNews();
     void updateNews(List<News> news);
 }

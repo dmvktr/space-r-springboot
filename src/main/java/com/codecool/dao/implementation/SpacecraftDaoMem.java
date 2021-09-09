@@ -1,4 +1,5 @@
-package com.codecool.dao;
+package com.codecool.dao.implementation;
+import com.codecool.dao.SpacecraftDao;
 import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.service.APIDataHandler;
 import com.codecool.service.apiAccessRoutes.APIAccessRoutes;
