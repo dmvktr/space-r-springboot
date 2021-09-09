@@ -7,6 +7,7 @@ import java.util.Objects;
 
 @Component
 public class News {
+    private int id;
     private String title;
     private String imageUrl;
     private String newsSite;
@@ -18,7 +19,20 @@ public class News {
     public News() {
     }
 
-    public News(String title, String imageUrl, String newsSite, String articleUrl, String url, String summary, String publishedAt) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public News(int id, String title, String imageUrl, String newsSite, String articleUrl, String url, String summary, String publishedAt) {
+        this.id = id;
         this.title = title;
         this.imageUrl = imageUrl;
         this.newsSite = newsSite;
