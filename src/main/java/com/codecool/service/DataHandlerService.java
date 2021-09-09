@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DataHandlerService {
-    private final ArticleDao articleDao;
+    private final NewsDao newsDao;
     private final AstronautDao astronautDao;
     private final GalleryDao galleryDao;
     private final SpacecraftDao spacecraftDao;
@@ -22,10 +22,10 @@ public class DataHandlerService {
     private final EventDao eventDao;
 
     @Autowired
-    public DataHandlerService(@Qualifier("articleDao") ArticleDao articleDao, @Qualifier("astronautDao") AstronautDao astronautDao,
+    public DataHandlerService(@Qualifier("newsDao") NewsDao newsDao, @Qualifier("astronautDao") AstronautDao astronautDao,
                               @Qualifier("galleryDao") GalleryDao galleryDao, @Qualifier("spacecraftDao") SpacecraftDao spacecraftDao,
                               @Qualifier("locationsDao") LocationsDao locationsDao, @Qualifier("eventDao") EventDao eventDao) {
-        this.articleDao = articleDao;
+        this.newsDao = newsDao;
         this.astronautDao = astronautDao;
         this.galleryDao = galleryDao;
         this.spacecraftDao = spacecraftDao;
@@ -38,7 +38,7 @@ public class DataHandlerService {
     }
 
     public News[] getAllArticles(){
-        return articleDao.getAllArticles();
+        return newsDao.getAllNews();
     }
 
     public GalleryPicture[] getAllPictures(){
