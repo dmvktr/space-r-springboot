@@ -1,19 +1,22 @@
 package com.codecool.model.events;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Event {
-    private String id;
+    private int id;
     private String name;
     private String description;
     private String location;
-    private String video_url;
+    @JsonProperty("video_url")
+    private String videoUrl;
     private String image;
     private String date;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,12 +60,19 @@ public class Event {
         this.image = feature_image;
     }
 
-    public String getVideo_url() {
-        return video_url;
+    public String getVideoUrl() {
+        return videoUrl;
     }
 
-    public void setVideo_url(String video_url) {
-        this.video_url = video_url;
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
