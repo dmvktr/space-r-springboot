@@ -1,10 +1,14 @@
 package com.codecool.model.astronauts;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Astronaut {
-    private String id;
+    private int id;
     private String name;
-    private String profile_image_thumbnail;
-    private String date_of_birth;
+    @JsonProperty("profile_image_thumbnail")
+    private String profileImageThumbnail;
+    @JsonProperty("date_of_birth")
+    private String dateOfBirth;
     private String nationality;
     private String bio;
     private AstronautStatus status;
@@ -17,11 +21,11 @@ public class Astronaut {
         this.status = status;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -33,20 +37,20 @@ public class Astronaut {
         this.name = name;
     }
 
-    public String getProfile_image_thumbnail() {
-        return profile_image_thumbnail;
+    public String getProfileImageThumbnail() {
+        return profileImageThumbnail;
     }
 
-    public void setProfile_image_thumbnail(String profile_image_thumbnail) {
-        this.profile_image_thumbnail = profile_image_thumbnail;
+    public void setProfileImageThumbnail(String profileImageThumbnail) {
+        this.profileImageThumbnail = profileImageThumbnail;
     }
 
-    public String getDate_of_birth() {
-        return date_of_birth;
+    public String getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getNationality() {

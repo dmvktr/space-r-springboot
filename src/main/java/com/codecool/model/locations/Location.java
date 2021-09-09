@@ -1,26 +1,19 @@
 package com.codecool.model.locations;
 
-import org.springframework.web.client.RestTemplate;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Location {
     private String id;
     private String name;
-    private String map_image;
-    private String country_code;
-    private String total_launch_count;
-    private String total_landing_count;
+    @JsonProperty("map_image")
+    private String mapImage;
+    @JsonProperty("country_code")
+    private String countryCode;
+    @JsonProperty("total_launch_count")
+    private String totalLaunchCount;
+    @JsonProperty("total_landing_count")
+    private String totalLandingCount;
     private String url;
-    private Pads landingPads;
-
-    public Pads getLandingPads() {
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate
-                .getForObject(url, Pads.class);
-    }
-
-    public void setLandingPads(Pads pads) {
-        this.landingPads = pads;
-    }
 
     public String getName() {
         return name;
@@ -38,37 +31,36 @@ public class Location {
         this.id = id;
     }
 
-    public String getMap_image() {
-        return map_image;
+    public String getMapImage() {
+        return mapImage;
     }
 
-    public void setMap_image(String map_image) {
-        this.map_image = map_image;
+    public void setMapImage(String mapImage) {
+        this.mapImage = mapImage;
     }
 
-
-    public String getCountry_code() {
-        return country_code;
+    public String getCountryCode() {
+        return countryCode;
     }
 
-    public void setCountry_code(String country_code) {
-        this.country_code = country_code;
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
-    public String getTotal_launch_count() {
-        return total_launch_count;
+    public String getTotalLaunchCount() {
+        return totalLaunchCount;
     }
 
-    public void setTotal_launch_count(String total_launch_count) {
-        this.total_launch_count = total_launch_count;
+    public void setTotalLaunchCount(String totalLaunchCount) {
+        this.totalLaunchCount = totalLaunchCount;
     }
 
-    public String getTotal_landing_count() {
-        return total_landing_count;
+    public String getTotalLandingCount() {
+        return totalLandingCount;
     }
 
-    public void setTotal_landing_count(String total_landing_count) {
-        this.total_landing_count = total_landing_count;
+    public void setTotalLandingCount(String totalLandingCount) {
+        this.totalLandingCount = totalLandingCount;
     }
 
     public String getUrl() {
@@ -79,3 +71,4 @@ public class Location {
         this.url = url;
     }
 }
+

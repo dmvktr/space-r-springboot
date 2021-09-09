@@ -5,7 +5,7 @@ import java.util.List;
 public class Events {
     private String next;
     private String previous;
-    private List<Event> events;
+    private List<Event> results;
 
     public String getNext() {
         return next;
@@ -24,10 +24,10 @@ public class Events {
     }
 
     public List<Event> getResults() {
-        return events;
+        return results;
     }
 
-    public void setResults(List<Event> events) {
-        this.events = events;
+    public void setResults(List<Event> results) {
+        this.results = results;
     }
 }
