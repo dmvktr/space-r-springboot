@@ -33,8 +33,8 @@ class DataHandlerServiceTests {
 
     @Test
     void newsRoute_shouldReturnNewsArray_whenUserVisitsRoute() {
-        News firstNewsArticle = new News("articleTitle", "dummyUrl", "newsSite", "articleUrl", "url", "summaryOfArticle", "publishedAt");
-        News secondNewsArticle = new News("articleTitle2", "dummyUrl2", "newsSite2", "articleUrl", "url", "summaryOfArticle", "publishedAt");
+        News firstNewsArticle = new News(1,"articleTitle", "dummyUrl", "newsSite", "articleUrl", "url", "summaryOfArticle", "publishedAt");
+        News secondNewsArticle = new News(2,"articleTitle2", "dummyUrl2", "newsSite2", "articleUrl", "url", "summaryOfArticle", "publishedAt");
         News[] news = {firstNewsArticle, secondNewsArticle};
 
         Mockito.when(newsDao.getAllNews()).thenReturn(news);
