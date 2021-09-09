@@ -2,8 +2,14 @@ package com.codecool.controller;
 
 import com.codecool.model.astronauts.Astronaut;
 import com.codecool.model.astronauts.Astronauts;
+import com.codecool.model.events.Event;
+import com.codecool.model.events.Events;
 import com.codecool.model.gallery.GalleryPicture;
+import com.codecool.model.locations.Location;
+import com.codecool.model.locations.Locations;
 import com.codecool.model.news.News;
+import com.codecool.model.spacecrafts.Spacecraft;
+import com.codecool.model.spacecrafts.Spacecrafts;
 import com.codecool.service.DataHandlerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -84,14 +90,66 @@ class RestControllerIntegrationTests {
     }
 
     @Test
-    void spacecrafts() {
+    void spacecraftsRoute_shouldReturnWithStatusOkAndCorrectResponse_whenUserVisitsRoute() throws Exception {
+        Spacecrafts spacecrafts = new Spacecrafts();
+        Spacecraft spacecraft1 = new Spacecraft();
+        Spacecraft spacecraft2 = new Spacecraft();
+        spacecraft1.setName("sonus");
+        spacecraft2.setName("apollo");
+        List<Spacecraft> listOfSpaceCrafts = new ArrayList<>(Arrays.asList(spacecraft1, spacecraft2));
+        String dummyURIString = "http://dummyUrlToNextPage.com";
+        spacecrafts.setNext(dummyURIString);
+        spacecrafts.setResults(listOfSpaceCrafts);
+        Mockito.when(dataHandlerService.getAllSpacecrafts()).thenReturn(spacecrafts);
+
+        mockMvc.perform(MockMvcRequestBuilders
+            .get("/spacecrafts"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.next").value(dummyURIString))
+            .andExpect(jsonPath("$.results").isArray())
+            .andExpect(jsonPath("$.results[0].name").value("sonus"))
+            .andExpect(jsonPath("$.results[1].name").value("apollo"));
     }
 
     @Test
-    void locations() {
+    void locationsRoute_shouldReturnWithStatusOkAndCorrectResponse_whenGetRequestIsUsed() throws Exception {
+        Locations locations = new Locations();
+        Location location1 = new Location();
+        Location location2 = new Location();
+        location1.setName("firstLocation");
+        location2.setName("secondLocation");
+        List<Location> listOfLocations = new ArrayList<>(List.of(location1, location2));
+        locations.setResults(listOfLocations);
+
+        Mockito.when(dataHandlerService.getAllLocations()).thenReturn(locations);
+
+        mockMvc.perform(MockMvcRequestBuilders
+            .get("/locations"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.results").isArray())
+            .andExpect(jsonPath("$.results[0].name").value("firstLocation"))
+            .andExpect(jsonPath("$.results[1].name").value("secondLocation"));
     }
 
     @Test
-    void events() {
+    void eventsRoute_shouldReturnWithStatusOkAndCorrectResponse_whenUserVisitsRoute() throws Exception {
+        Events events = new Events();
+        Event event1 = new Event();
+        Event event2 = new Event();
+        event1.setDescription("main event");
+        event2.setDescription("backup event");
+        List<Event> listOfEvents = new ArrayList<>(List.of(event1, event2));
+        events.setResults(listOfEvents);
+
+        Mockito.when(dataHandlerService.getAllEvents()).thenReturn(events);
+        mockMvc.perform(MockMvcRequestBuilders
+            .get("/events"))
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.results").isArray())
+            .andExpect(jsonPath("$.results[0].description").value("main event"))
+            .andExpect(jsonPath("$.results[1].description").value("backup event"));
     }
 }
