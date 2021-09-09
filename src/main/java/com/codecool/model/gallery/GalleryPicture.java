@@ -2,12 +2,16 @@ package com.codecool.model.gallery;
 
 
 public class GalleryPicture {
-    private String hdUrl;
+    private String hdurl;
     private String url;
     private String title;
 
-    public String getHdUrl() {
-        return hdUrl;
+    public String getHdurl() {
+        return hdurl;
+    }
+
+    public void setHdurl(String hdurl) {
+        this.hdurl = hdurl;
     }
 
     public String getUrl() {
@@ -18,9 +22,6 @@ public class GalleryPicture {
         return title;
     }
 
-    public void setHdUrl(String hdUrl) {
-        this.hdUrl = hdUrl;
-    }
 
     public void setUrl(String url) {
         this.url = url;
@@ -33,7 +34,7 @@ public class GalleryPicture {
     @Override
     public String toString() {
         return "GalleryPicture{" +
-            "hdUrl='" + hdUrl + '\'' +
+            "hdUrl='" + hdurl + '\'' +
             ", url='" + url + '\'' +
             ", title='" + title + '\'' +
             '}';
